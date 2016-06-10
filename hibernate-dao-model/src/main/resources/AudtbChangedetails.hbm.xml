@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 7, 2016 5:01:25 PM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.poc.domain.AudtbChangedetails" table="AUDTB_CHANGEDETAILS" optimistic-lock="version">
+        <comment>CHANGEDETAILS-Audit Detail Changes Table</comment>
+        <composite-id name="id" class="com.poc.domain.AudtbChangedetailsId">
+            <key-property name="aubranchcode" type="string">
+                <column name="AUBRANCHCODE" length="8" />
+            </key-property>
+            <key-property name="auresourceid" type="string">
+                <column name="AURESOURCEID" length="256" />
+            </key-property>
+            <key-property name="audatetime" type="timestamp">
+                <column name="AUDATETIME" length="26" />
+            </key-property>
+            <key-property name="auuserid" type="string">
+                <column name="AUUSERID" length="20" />
+            </key-property>
+            <key-property name="auaction" type="int">
+                <column name="AUACTION" />
+            </key-property>
+            <key-property name="aucolumnseq" type="int">
+                <column name="AUCOLUMNSEQ" />
+            </key-property>
+            <key-property name="aulogsequence" type="java.lang.Integer">
+                <column name="AULOGSEQUENCE" />
+            </key-property>
+            <key-property name="aucolumnname" type="string">
+                <column name="AUCOLUMNNAME" length="30" />
+            </key-property>
+            <key-property name="aunewvalue" type="string">
+                <column name="AUNEWVALUE" length="100" />
+            </key-property>
+            <key-property name="auoldvalue" type="string">
+                <column name="AUOLDVALUE" length="100" />
+            </key-property>
+            <key-property name="auchannel" type="string">
+                <column name="AUCHANNEL" length="30" />
+            </key-property>
+            <key-property name="auobjectid" type="string">
+                <column name="AUOBJECTID" length="50" />
+            </key-property>
+            <key-property name="aubusinessdttm" type="timestamp">
+                <column name="AUBUSINESSDTTM" length="26" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

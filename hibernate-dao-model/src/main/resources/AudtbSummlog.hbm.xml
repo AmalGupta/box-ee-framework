@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 7, 2016 5:01:25 PM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.poc.domain.AudtbSummlog" table="AUDTB_SUMMLOG" optimistic-lock="version">
+        <comment>Each AUDTB_SUMMLOG may be related to one or more AUDTB_CHANGEDETAILS</comment>
+        <id name="ausummlogidpk" type="string">
+            <column name="AUSUMMLOGIDPK" length="50" />
+            <generator class="assigned" />
+        </id>
+        <property name="aulogsequence" type="int">
+            <column name="AULOGSEQUENCE" not-null="true">
+                <comment>Sequence number of Audit transaction</comment>
+            </column>
+        </property>
+        <property name="aubranchcode" type="string">
+            <column name="AUBRANCHCODE" length="8">
+                <comment>Branch code of user performing action</comment>
+            </column>
+        </property>
+        <property name="auresourceid" type="string">
+            <column name="AURESOURCEID" length="256">
+                <comment>The ID of the Resource used</comment>
+            </column>
+        </property>
+        <property name="aucreationdttm" type="timestamp">
+            <column name="AUCREATIONDTTM" length="26">
+                <comment>Date and time of transaction</comment>
+            </column>
+        </property>
+        <property name="auuserid" type="string">
+            <column name="AUUSERID" length="20">
+                <comment>User name</comment>
+            </column>
+        </property>
+        <property name="auworkstation" type="string">
+            <column name="AUWORKSTATION" length="20">
+                <comment>ID of the Computer used</comment>
+            </column>
+        </property>
+        <property name="auaction" type="java.lang.Integer">
+            <column name="AUACTION">
+                <comment>Number corresponding to the message in the language table, i.e.571-Create, 572-Modify, 573-Close, 574-Delete</comment>
+            </column>
+        </property>
+        <property name="auobjectid" type="string">
+            <column name="AUOBJECTID" length="50">
+                <comment>The value of the object key</comment>
+            </column>
+        </property>
+        <property name="auobjectdescription" type="string">
+            <column name="AUOBJECTDESCRIPTION" length="256">
+                <comment>The value of the object description</comment>
+            </column>
+        </property>
+        <property name="auusertype" type="string">
+            <column name="AUUSERTYPE" length="1">
+                <comment>User type , 'T','N','S'</comment>
+            </column>
+        </property>
+        <property name="auchanneltype" type="string">
+            <column name="AUCHANNELTYPE" length="30">
+                <comment>TO STORE CHANNEL TYPE</comment>
+            </column>
+        </property>
+        <property name="ausessionid" type="string">
+            <column name="AUSESSIONID">
+                <comment>Session identified. To be populated with run time microflow id</comment>
+            </column>
+        </property>
+        <property name="aubusinessdttm" type="timestamp">
+            <column name="AUBUSINESSDTTM" length="26">
+                <comment>TO STORE BUSINESSDATETIME</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

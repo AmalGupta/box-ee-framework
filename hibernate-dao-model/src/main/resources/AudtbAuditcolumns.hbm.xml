@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 7, 2016 5:01:25 PM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.poc.domain.AudtbAuditcolumns" table="AUDTB_AUDITCOLUMNS" optimistic-lock="version">
+        <comment>AUDIT COLUMNS - stores auditable columns while building the audit procedures, triggers and tables</comment>
+        <composite-id name="id" class="com.poc.domain.AudtbAuditcolumnsId">
+            <key-property name="autablename" type="string">
+                <column name="AUTABLENAME" length="30" />
+            </key-property>
+            <key-property name="aucolname" type="string">
+                <column name="AUCOLNAME" length="30" />
+            </key-property>
+        </composite-id>
+        <property name="auauditflag" type="string">
+            <column name="AUAUDITFLAG" length="1" not-null="true">
+                <comment>Audit Y/N Flag. Y - Audit this column, N - Do not audit this column</comment>
+            </column>
+        </property>
+        <property name="auschemaname" type="string">
+            <column name="AUSCHEMANAME" length="15">
+                <comment>Name of Audited Schema</comment>
+            </column>
+        </property>
+        <property name="autriggerflag" type="string">
+            <column name="AUTRIGGERFLAG" length="1" not-null="true">
+                <comment>Flag to indicate if trigger needs to be generated for the column - AUCOLNAME</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

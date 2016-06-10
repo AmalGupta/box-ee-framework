@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+    <bean id="testPartyDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.ibm.db2.jcc.DB2Driver"/>
+        <property name="url" value="jdbc:db2://localhost:50000/test"/>
+        <property name="username" value="bfdbusr"/>
+        <property name="password" value="db2@admin"/>
+    </bean>
+
+    <bean id="testPartySessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="testPartyDataSource"/>
+        <property name="mappingResources">
+            <list>
+                <value>AudtbAuditcolumns.hbm.xml</value>
+                <value>AudtbBodmap.hbm.xml</value>
+                <value>AudtbChangedetails.hbm.xml</value>
+                <value>AudtbSummlog.hbm.xml</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <value>
+                hibernate.dialect=org.hibernate.dialect.DB2Dialect
+            </value>
+        </property>
+    </bean>
+    
+    <bean id="template" class="org.springframework.orm.hibernate4.HibernateTemplate">
+		<property name="sessionFactory" ref="testPartySessionFactory"/>
+	</bean>
+	
+	<bean id="abstractDao" class="com.poc.dao.AbstractDao" > 
+		<property name="template" ref="template"></property>
+	</bean>
+	
+	<bean id="auditBodMapDao" class="com.poc.dao.AuditBodMapDao" parent ="abstractDao"/>
+
+</beans>
